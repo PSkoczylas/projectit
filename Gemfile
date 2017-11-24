@@ -20,7 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+# gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -36,9 +36,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'haml'
 gem 'haml-rails'
 gem 'simple_form'
-gem 'enum_help'
 gem "font-awesome-rails"
+gem 'bootstrap-sass', '~> 3.3.6'
+
+gem 'enum_help'
 gem 'devise'
+
 gem 'rubocop', require: false
 
 group :development, :test do
