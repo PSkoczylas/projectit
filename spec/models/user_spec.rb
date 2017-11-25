@@ -44,8 +44,7 @@ RSpec.describe User, type: :model do
     build(:user, last_name: shorter_name).should be_valid
   end
 
-  it "email has most 255 characters" do
-    longer_mail = "m" * 252 + "@a.c"
+  it "email has most 255 characters" do    longer_mail = "m" * 252 + "@a.c"
     build(:user, email: longer_mail).should_not be_valid
     shorter_mail = "m" * 251 + "@a.c"
     build(:user, email: shorter_mail).should be_valid
@@ -83,4 +82,7 @@ RSpec.describe User, type: :model do
     build(:user, password: "a", password_confirmation: "a").should_not be_valid
     build(:user, password: "b" * 5, password_confirmation: "b" * 5).should_not be_valid
   end
+
+
+  it { should have_many(:projects).through(:user_projects) }
 end

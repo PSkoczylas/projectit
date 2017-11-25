@@ -16,6 +16,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string :first_name, null: false, default: ""
       t.string :last_name,  null: false, default: ""
 
+      t.boolean :admin, default: false, null: false
+
       ## Trackable
       t.integer  :sign_in_count, default: 0, null: false
       t.datetime :current_sign_in_at
