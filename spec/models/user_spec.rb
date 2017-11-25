@@ -83,6 +83,7 @@ RSpec.describe User, type: :model do
     build(:user, password: "b" * 5, password_confirmation: "b" * 5).should_not be_valid
   end
 
+  it { should have_many(:tasks) }
 
   it { should have_many(:projects).through(:user_projects) }
 end
