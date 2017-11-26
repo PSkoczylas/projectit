@@ -1,0 +1,27 @@
+%h1 Tasks
+
+.actions
+  = link_to 'Add task', new_task_path, :class => "btn btn-success", data: { "no-turbolink" =>  true}
+
+- (0..3).each do |status|
+  - tasks_statused = @tasks.where(status: status)
+  - if not tasks_statused
+    %h2= tasks_statused.first.status.humanize
+    %table.table
+      %thead
+        %tr
+          %th Name
+          %th Description
+          %th Priority
+        
+      %tbody
+        - tasks_statused.each do |task|
+          %tr
+            %td.text
+              %span= link_to task.name, task
+            %td.text
+              %span= link_to task.description, task
+            %td= task.priority.humanize
+            %td= link_to 'Edit', edit_project_path(project), data: { "no-turbolink" =>  true}
+            %td= link_to 'x', project, method: :delete, data: { confirm: 'Na pewno usunąć?' }, class: "close"
+
