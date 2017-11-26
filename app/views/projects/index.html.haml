@@ -1,0 +1,21 @@
+%h1 Projects
+
+.actions
+  = link_to 'Add project', new_project_path, :class => "btn btn-success", data: { "no-turbolink" =>  true}
+
+%table.table
+  %thead
+    %tr
+      %th Go to tasks
+      %th Go to description
+    
+  %tbody
+    - @projects.each do |project|
+      %tr
+        %td.text
+          %span= link_to project.name, tasks_path(params: {project_id: project.id})
+        %td.text
+          %span= link_to project.description, project
+        %td= link_to 'Edit', edit_project_path(project), data: { "no-turbolink" =>  true}
+        %td= link_to 'x', project, method: :delete, data: { confirm: 'Na pewno usunąć?' }, class: "close"
+

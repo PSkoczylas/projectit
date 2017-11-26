@@ -2,4 +2,11 @@
   .container
     %nav
       .navbar-header
-        %button.navbar-toggle{:data => {:target => ".navbar-collapse", :toggle => "collapse"}, :type => "button"}
+        = link_to "ProjectIT", root_path, id: "logo"
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          = link_to "Back", :back, id: "redirected_nav"
+        %li
+          - if user_signed_in?
+            = link_to "Logout", destroy_user_session_path, :method => :delete, id: "redirected_nav"
+        

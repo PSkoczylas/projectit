@@ -1,0 +1,21 @@
+%h1= @project.name
+%h3= @project.description
+
+- if @user_projects
+  %h3= "Users in project:"
+  %table.table
+    %thead
+      %tr
+        %th User Name
+        %th First Name
+        %th Last Name
+        %th E-mail
+      
+    %tbody
+      - @user_projects.each do |user_project|
+        %tr
+          %td= user_project.user.user_name
+          %td= user_project.user.first_name
+          %td= user_project.user.user_name
+          %td= user_project.user.email
+    

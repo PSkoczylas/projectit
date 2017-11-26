@@ -1,0 +1,8 @@
+.padding
+  .row
+    .col-md-6
+      = simple_form_for @project do |f|
+        = f.input :name, label: 'Name', error: "Required length: 1-255 signs"
+        = f.input :description, label: "Description"
+        = f.submit "Submit", class: "btn btn-success"
+
