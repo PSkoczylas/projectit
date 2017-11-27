@@ -1,11 +1,11 @@
-%h1 Tasks
+%h1 Tasks for #{@project.name}
 
 .actions
-  = link_to 'Add task', new_task_path, :class => "btn btn-success", data: { "no-turbolink" =>  true}
+  = link_to 'Add task', new_project_task_path, :class => "btn btn-success", data: { "no-turbolink" =>  true}
 
 - (0..3).each do |status|
   - tasks_statused = @tasks.where(status: status)
-  - if not tasks_statused
+  - if tasks_statused.length > 0
     %h2= tasks_statused.first.status.humanize
     %table.table
       %thead
@@ -18,10 +18,10 @@
         - tasks_statused.each do |task|
           %tr
             %td.text
-              %span= link_to task.name, task
+              %span= link_to task.name, project_task_path(@project, task)
             %td.text
-              %span= link_to task.description, task
-            %td= task.priority.humanize
-            %td= link_to 'Edit', edit_project_path(project), data: { "no-turbolink" =>  true}
-            %td= link_to 'x', project, method: :delete, data: { confirm: 'Na pewno usunąć?' }, class: "close"
+              %span= link_to task.description, project_task_path(@project, task)
+            %td= task.priority.humanize 
+            %td= link_to 'Edit', edit_project_task_path(@project, task), data: { "no-turbolink" =>  true}
+            %td= link_to 'x', project_task_path(@project, task), method: :delete, data: { confirm: 'Na pewno usunąć?' }, class: "close"
 

@@ -17,6 +17,11 @@ class ProjectsController < ApplicationController
     @user_projects = set_user_projects
   end
 
+  # GET /projects/:id/edit
+  def edit
+    @project = set_project
+  end
+
   # POST /projects
   def create
     @project = Project.new(project_params)

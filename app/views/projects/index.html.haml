@@ -13,7 +13,7 @@
     - @projects.each do |project|
       %tr
         %td.text
-          %span= link_to project.name, tasks_path(params: {project_id: project.id})
+          %span= link_to project.name, project_tasks_path(project.id)
         %td.text
           %span= link_to project.description, project
         %td= link_to 'Edit', edit_project_path(project), data: { "no-turbolink" =>  true}

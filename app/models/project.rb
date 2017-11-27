@@ -12,4 +12,5 @@ class Project < ApplicationRecord
     def destroy_tasks
       self.tasks.destroy_all
     end
+
 end

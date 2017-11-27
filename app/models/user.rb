@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :tasks
 
   before_save { self.email = email.downcase }
+  before_destroy :destroy_tasks
 
   validates :user_name, presence: true,
                         length: {maximum: 50}
@@ -21,4 +22,9 @@ class User < ApplicationRecord
   validates :email, presence: true, length: {maximum: 255},
                     format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
+
+  private
+    def destroy_tasks
+      self.tasks.destroy_all
+    end
 end
