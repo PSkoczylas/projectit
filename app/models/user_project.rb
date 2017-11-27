@@ -9,7 +9,6 @@ class UserProject < ApplicationRecord
   protected
     def is_unique?
       duplicate = UserProject.find_by(user_id: self.user_id, project_id: self.project_id)
-      binding.pry
       return duplicate
     end
 
