@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :set_task, only: [:destroy, :edit, :update, :show]
   before_action :authenticate_user!
   
   # GET projects/:project_id/tasks
@@ -16,7 +17,6 @@ class TasksController < ApplicationController
   # GET projects/:project_id/tasks/:id/edit
   def edit
     @project = set_project
-    @task = set_task
   end
 
   # POST projects/:project_id/tasks
@@ -33,15 +33,22 @@ class TasksController < ApplicationController
 
   # GET projects/:project_id/tasks/:id
   def show
-    @task = set_task
-    @projects = set_project
+    @project = set_project
   end
 
   # DELETE projects/:project_id/tasks/:id
   def destroy
-    @task = set_task
     @task.destroy
     redirect_to project_tasks_path
+  end
+
+  # PATCH/PUT /projects/:project_id/tasks/:id
+  def update
+    if @task.update(task_params)
+      redirect_to project_tasks_path, notice: "Task updated"
+    else
+      render action: 'edit'
+    end
   end
 
   private

@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :set_project, only: [:destroy, :edit, :update, :show]
   before_action :authenticate_user!
   
   # GET /projects
@@ -13,13 +14,11 @@ class ProjectsController < ApplicationController
 
   # GET /projects/:id
   def show
-    @project = set_project
     @user_projects = set_user_projects
   end
 
   # GET /projects/:id/edit
   def edit
-    @project = set_project
   end
 
   # POST /projects
@@ -35,7 +34,6 @@ class ProjectsController < ApplicationController
 
   # DELETE /projects/:id
   def destroy
-    @project = set_project
     @project.destroy
     redirect_to projects_path
   end
