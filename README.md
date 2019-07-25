@@ -1,24 +1,4 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ProjectIT it's Trello-like web app, where we can sign up, log in, save projects. For every project we can create, edit ect
+tasks with statuses. You can see app here: https://itprojectit.herokuapp.com/ with log in user@user.com and password abc123 or sign up.
